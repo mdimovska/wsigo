@@ -1,0 +1,10 @@
+<ion-view view-title="{{category.name}}">
+    <ion-content>
+        <input class="search-field" ng-model="query" placeholder="Type the name of the venue">
+        <ion-list>
+            <ion-item ng-repeat="place in places| filter: {venue: {name: query}}" ui-sref="app.place({placeId:place.venue.id})" ng-click="setPlaceDetails(place)">
+                {{place.venue.name}}  {{place.venue.location.distance >= 1000 ? (place.venue.location.distance / 1000).toFixed(2) + ' km away' : place.venue.location.distance + ' m away'}}
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

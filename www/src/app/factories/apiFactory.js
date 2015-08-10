@@ -1,0 +1,97 @@
+angular.module('starter')
+
+        .factory('apiFactory', function apiFactory() {
+
+            var categories = [
+                {
+                    name: "Food/Drink",
+                    id: "4d4b7105d754a06374d81259",
+                    cssClass: "main-category"
+                },
+                {
+                    name: "Bakery",
+                    id: "4d4b7105d754a06376d81259",
+                    cssClass: "sub-category"
+                },
+                {
+                    name: "Café",
+                    id: "4bf58dd8d48988d16d941735",
+                    cssClass: "sub-category"
+                },
+                {
+                    name: "Cofee Shop",
+                    id: "4bf58dd8d48988d1e0931735",
+                    cssClass: "sub-category"
+                },
+                {
+                    name: "Creperie",
+                    id: "52e81612bcbc57f1066b79f2",
+                    cssClass: "sub-category"
+                },
+                {
+                    name: "Dessert Shop",
+                    id: "4bf58dd8d48988d1d0941735",
+                    cssClass: "sub-category"
+                },
+                {
+                    name: "Fast Food Restaurant",
+                    id: "4bf58dd8d48988d16e941735",
+                    cssClass: "sub-category"
+                },
+                {
+                    name: "Restaurant",
+                    id: "4bf58dd8d48988d1c4941735",
+                    cssClass: "sub-category"
+                }, {
+                    name: "Sandwich Place",
+                    id: "4bf58dd8d48988d1c5941735",
+                    cssClass: "sub-category"
+                }, {
+                    name: "Salad Place",
+                    id: "4bf58dd8d48988d1bd941735",
+                    cssClass: "sub-category"
+                }, {
+                    name: "Vegetarian / Vegan Restaurant",
+                    id: "4bf58dd8d48988d1d3941735",
+                    cssClass: "sub-category"
+                },
+                {
+                    name: "Nightlife",
+                    id: "4d4b7105d754a06376d81259",
+                    cssClass: "main-category"
+                },
+                {
+                    name: "Bar",
+                    id: "4bf58dd8d48988d116941735",
+                    cssClass: "sub-category"
+                },
+                {
+                    name: "Brewery",
+                    id: "50327c8591d4c4b30a586d5d",
+                    cssClass: "sub-category"
+                },
+                {
+                    name: "Lounge",
+                    id: "4bf58dd8d48988d121941735",
+                    cssClass: "sub-category"
+                },
+                {
+                    name: "Nightclub",
+                    id: "4bf58dd8d48988d11f941735",
+                    cssClass: "sub-category"
+                }
+            ];
+
+            var apiFactory = {};
+
+            apiFactory.getCategories = function () {
+                return categories;
+            };
+            apiFactory.getPlacesUrl = function (categoryId) {
+                if (categoryId === undefined || categoryId === '') {
+                    categoryId = '4d4b7105d754a06374d81259';
+                }
+                return 'https://api.foursquare.com/v2/venues/explore?client_id=WKTSZRJQFBX5LAIGIPTZ0O3XJLX45SOKRRT3JAWQZBNTMDSY&client_secret=X4MV2K10DTQF0O3AEJAF13GRNFIWPXI3PFKPBGJ2OXRTC5TB&ll=42,21&categoryId=' + categoryId + '&v=20150805&venuePhotos=1';
+            }
+            return apiFactory;
+        })

@@ -1,0 +1,17 @@
+<ion-view view-title="Place">
+    <ion-content>
+        <h1>Place with id: {{placeId}}</h1>
+        <div>
+            <p>{{place.venue.name}}</p> 
+            <p>{{place.venue.location.distance >= 1000 ? (place.venue.location.distance/1000).toFixed(2) + ' km away' : place.venue.location.distance + ' m away'}}</p>
+        </div>
+
+        Rating:
+        <p>{{place.venue.rating}}</p>
+
+        <p> - {{place.venue.hours.status}} - </p>
+        <p>{{place.venue.hereNow.summary}}</p>
+
+        {{place}}
+    </ion-content>
+</ion-view>

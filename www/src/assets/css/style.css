@@ -1,0 +1,46 @@
+/* Empty. Add your own CSS if you like */
+
+ion-item.main-category {
+    color: green;
+}
+ion-item.sub-category {
+    color: blue;
+}
+.home-screen-content {
+    height:  100%;
+    width: 100%;
+    max-height: 100%;
+    position: relative;
+}
+.home-screen-btn-show-details-wrapper {
+    position: fixed;
+    z-index: 10;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 15px;
+}
+.home-screen-btn-show-details {
+    left: 10px;
+    right: 10px;
+    width: 100%;
+    /* margin: 20px; */
+    /* width: 100%; */
+}
+
+img.home-screen-image {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  top: 43px;
+  z-index: 2;
+}
+
+input.search-field {
+    width: 100%;
+    padding: 5px 15px;
+}
