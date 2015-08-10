@@ -3,12 +3,17 @@ angular.module('starter')
         .factory('locationFactory', function locationFactory($q, $window) {
 
             var locationFactory = {};
-            var location = {};
+            var location;
 
             locationFactory.getCurrentPosition = function () {
                 var deferred = $q.defer();
                 $window.navigator.geolocation.getCurrentPosition(function (position) {
-                    deferred.resolve(position);
+                     location = {
+                        latitude: position.coords.latitude,
+                        longitude: position.coords.longitude,
+                        zoom: 8
+                    };
+                    deferred.resolve(location);
                 }, function (error) {
                     deferred.reject(error);
                 });
@@ -17,15 +22,11 @@ angular.module('starter')
 
 
             locationFactory.storePosition = function () {
+                
                 // Initialise the map
                 locationFactory.getCurrentPosition().then(function (result) {
-                    location = {
-                        center: {
-                            latitude: result.coords.latitude,
-                            longitude: result.coords.longitude
-                        },
-                        zoom: 8
-                    };
+//                    location = result;
+                    console.log(JSON.stringify(location));
                 }, function (error) {
                     console.log('Location retrieval failed. Error: ' + JSON.stringify(error));
                 });

@@ -1,6 +1,6 @@
 angular.module('starter')
 
-        .factory('apiFactory', function apiFactory() {
+        .factory('apiFactory', function apiFactory($http, $q) {
 
             var categories = [
                 {
@@ -87,11 +87,59 @@ angular.module('starter')
             apiFactory.getCategories = function () {
                 return categories;
             };
-            apiFactory.getPlacesUrl = function (categoryId) {
+            apiFactory.getPlacesUrl = function (categoryId, location) {
+                if (location === undefined) {
+                    location = {
+                        latitude: 1,
+                        longitude: 2
+                    }
+                }
                 if (categoryId === undefined || categoryId === '') {
                     categoryId = '4d4b7105d754a06374d81259';
                 }
-                return 'https://api.foursquare.com/v2/venues/explore?client_id=WKTSZRJQFBX5LAIGIPTZ0O3XJLX45SOKRRT3JAWQZBNTMDSY&client_secret=X4MV2K10DTQF0O3AEJAF13GRNFIWPXI3PFKPBGJ2OXRTC5TB&ll=42,21&categoryId=' + categoryId + '&v=20150805&venuePhotos=1';
+                var ll = location.latitude + ',' + location.longitude;
+                return 'https://api.foursquare.com/v2/venues/explore?client_id=WKTSZRJQFBX5LAIGIPTZ0O3XJLX45SOKRRT3JAWQZBNTMDSY&client_secret=X4MV2K10DTQF0O3AEJAF13GRNFIWPXI3PFKPBGJ2OXRTC5TB&ll=' + ll + '&categoryId=' + categoryId + '&v=20150805&venuePhotos=1';
+            }
+
+            apiFactory.getPlaces = function (categoryId, location) {
+
+                var placesUrl = apiFactory.getPlacesUrl(categoryId, location);
+
+                var def = $q.defer();
+                $http.get(placesUrl)
+                        .success(function (data) {
+                            def.resolve(data);
+                        })
+                        .error(function () {
+                            def.reject("Failed to get place list");
+                        });
+                return def.promise;
+            }
+            function getRandomNumber(toNumber) {
+                return Math.floor((Math.random() * toNumber));
+            }
+            function getRandom(list) {
+                return list[Math.floor((Math.random() * list.length))];
+            }
+            apiFactory.getRandomPlace = function (location) {
+
+                var categories = apiFactory.getCategories();
+                //get random category
+                var categoryId = getRandom(categories).id;
+
+                var def = $q.defer();
+                var placesUrl = apiFactory.getPlacesUrl(categoryId, location);
+
+                $http.get(placesUrl)
+                        .success(function (data) {
+                            var i = getRandomNumber(data.response.groups[0].items.length);
+                            var result = data.response.groups[0].items[i];
+                            def.resolve(result);
+                        })
+                        .error(function () {
+                            def.reject("Failed to get random place");
+                        });
+                return def.promise;
             }
             return apiFactory;
         })

@@ -24,8 +24,6 @@ angular.module('starter',
                 }
             });
 
-            // Initialise the map
-            locationFactory.storePosition();
         })
 
         .config(function ($stateProvider, $urlRouterProvider) {
@@ -33,7 +31,7 @@ angular.module('starter',
 
                     .state('app', {
                         url: '/app',
-                        abstract: true,
+                        //abstract: true,
                         templateUrl: 'src/app/views/menu.html',
                         controller: 'MenuCtrl'
                     })

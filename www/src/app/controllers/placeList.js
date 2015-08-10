@@ -1,15 +1,11 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 angular.module('starter')
         .controller('PlaceListCtrl', function (
                 $scope,
                 $stateParams,
-                placesService,
+                apiFactory,
                 placeDetailsFactory,
-                categoryDetailsFactory
+                categoryDetailsFactory,
+                locationFactory
                 ) {
 
             $scope.category = categoryDetailsFactory.getTempCategoryDetais();
@@ -17,8 +13,8 @@ angular.module('starter')
             $scope.query = '';
             $scope.categoryId = $stateParams.categoryId;
 
-            $scope.getObjects = function (categoryId) {
-                placesService.getPlaces(categoryId)
+            $scope.getPlaces = function (categoryId, location) {
+                apiFactory.getPlaces(categoryId, location)
                         .then(function (success) {
                             $scope.places = success.response.groups[0].items;
                         },
@@ -27,7 +23,16 @@ angular.module('starter')
                                 });
             };
 
-            $scope.getObjects($scope.categoryId);
+            var location = locationFactory.getPosition();
+            if (location === undefined) {
+                locationFactory.getCurrentPosition().then(function (result) {
+                    $scope.getPlaces($scope.categoryId, result);
+                }, function (error) {
+                    console.log('Location retrieval failed. Error: ' + JSON.stringify(error));
+                });
+            } else {
+                $scope.getPlaces($scope.categoryId, location);
+            }
 
             $scope.setPlaceDetails = function (place) {
                 placeDetailsFactory.setTempPlaceDetails(place);

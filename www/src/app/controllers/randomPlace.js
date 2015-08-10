@@ -3,11 +3,25 @@ angular.module('starter')
                 $scope,
                 $state,
                 placeDetailsFactory,
-                placesService) {
+                apiFactory,
+                locationFactory) {
 
             $scope.imgSrc = 'src/assets/defaultPlaceImg.png';
             $scope.getRandomPlace = function () {
-                placesService.getRandomPlace()
+
+                var location = locationFactory.getPosition();
+                if (location === undefined) {
+                    locationFactory.getCurrentPosition().then(function (result) {
+                        loadPlace(result);
+                    }, function (error) {
+                        console.log('Location retrieval failed. Error: ' + JSON.stringify(error));
+                    });
+                } else {
+                    loadPlace(location);
+                }
+            };
+            var loadPlace = function (location) {
+                apiFactory.getRandomPlace(location)
                         .then(function (success) {
                             var randomPlace = success;
                             $scope.randomPlace = randomPlace;
@@ -22,7 +36,7 @@ angular.module('starter')
                                 function (error) {
                                     console.log('Random place retrieval failed. Error: ' + JSON.stringify(error));
                                 });
-            };
+            }
 
             $scope.getRandomPlace();
 
