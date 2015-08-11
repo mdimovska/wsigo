@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter',
         [
-            'ionic'
+            'ionic', 'uiGmapgoogle-maps'
         ])
 
         .run(function ($ionicPlatform, locationFactory) {
@@ -26,12 +26,11 @@ angular.module('starter',
 
         })
 
-        .config(function ($stateProvider, $urlRouterProvider) {
+        .config(function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
             $stateProvider
-
                     .state('app', {
                         url: '/app',
-                        //abstract: true,
+                        abstract: true,
                         templateUrl: 'src/app/views/menu.html',
                         controller: 'MenuCtrl'
                     })
@@ -66,4 +65,12 @@ angular.module('starter',
                     });
             // if none of the above states are matched, use this as the fallback
             $urlRouterProvider.otherwise('app/randomPlace');
+
+            uiGmapGoogleMapApiProvider.configure({
+                key: 'AIzaSyD1Gu7s2Eh1LcXGDd4-88DqAbijwYH-iBk',
+                v: '3.17',
+//                libraries: '',
+                language: 'en',
+                sensor: 'false',
+            })
         });

@@ -18,9 +18,6 @@
         </ion-header-bar>
         <ion-content>
             <ion-list>
-                <ion-item menu-close ng-click="login()">
-                    Login
-                </ion-item>
                 <ion-item menu-close ng-class="category.cssClass" ng-repeat="category in categories" ui-sref="app.placeList({categoryId: category.id})" ng-click="setCategoryDetails(category)">
                     {{category.name}}
                 </ion-item>

@@ -14,6 +14,7 @@ angular.module('starter')
             $scope.categoryId = $stateParams.categoryId;
 
             $scope.getPlaces = function (categoryId, location) {
+                $scope.location = location;
                 apiFactory.getPlaces(categoryId, location)
                         .then(function (success) {
                             $scope.places = success.response.groups[0].items;
@@ -36,5 +37,6 @@ angular.module('starter')
 
             $scope.setPlaceDetails = function (place) {
                 placeDetailsFactory.setTempPlaceDetails(place);
+                placeDetailsFactory.setTempLocation($scope.location);
             }
         })

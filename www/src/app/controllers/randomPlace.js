@@ -21,6 +21,7 @@ angular.module('starter')
                 }
             };
             var loadPlace = function (location) {
+                $scope.location = location;
                 apiFactory.getRandomPlace(location)
                         .then(function (success) {
                             var randomPlace = success;
@@ -43,6 +44,7 @@ angular.module('starter')
             $scope.showPlaceDetails = function () {
                 var randomPlace = $scope.randomPlace;
                 placeDetailsFactory.setTempPlaceDetails(randomPlace);
+                placeDetailsFactory.setTempLocation($scope.location);
                 $state.go('app.place', {placeId: randomPlace.venue.id});
             }
 
