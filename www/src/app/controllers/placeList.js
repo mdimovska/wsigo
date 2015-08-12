@@ -10,7 +10,9 @@ angular.module('starter')
 
             $scope.category = categoryDetailsFactory.getTempCategoryDetais();
 
-            $scope.query = '';
+            $scope.input = {
+                query: ''
+            };
             $scope.categoryId = $stateParams.categoryId;
 
             $scope.getPlaces = function (categoryId, location) {
