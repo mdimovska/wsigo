@@ -1,10 +1,18 @@
 <ion-view view-title="{{category.name}}" hide-back-button="false" >
     <ion-content scroll='false'>
-        <input class="search-field" ng-model="input.query" placeholder="Type the name of the venue">
+        <!--<input class="search-field" ng-model="input.query" placeholder="Type the name of the venue">-->
+
+        <div class="list list-inset search-field">
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" ng-model="input.query" placeholder="Search by name">
+            </label>
+        </div>
+
     </ion-content>
     <ion-content>
         <ion-list>
-            <ion-item class="item item-thumbnail-left item-dark" ng-repeat="place in places | filter: {venue: {name: input.query}}" ui-sref="app.place({placeId:place.venue.id})" ng-click="setPlaceDetails(place)">
+            <ion-item class="item item-thumbnail-left item-dark" ng-repeat="place in places| filter: {venue: {name: input.query}}" ui-sref="app.place({placeId:place.venue.id})" ng-click="setPlaceDetails(place)">
                 <img ng-src="{{place.venue.categories[0].icon.prefix + '64' + place.venue.categories[0].icon.suffix}}">
                 <h2>{{place.venue.name}}</h2>
                 <p>
