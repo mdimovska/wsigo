@@ -1,11 +1,12 @@
 <ion-view view-title="Where should I go?">
     <ion-nav-buttons side="right">
-      <button class="button button-clear button-calm" ng-click="getRandomPlace()">
-        Next
-      </button>
+        <button class="button button-clear button-calm" ng-click="getRandomPlace()">
+            Next
+        </button>
     </ion-nav-buttons>
     <ion-content class="home-screen-content" scroll="false">
         <img ng-src="{{imgSrc}}" class="home-screen-image" image-resize/>
+        <p class="random-place-name">{{placeName}}</p>
         <div class="home-screen-btn-show-details-wrapper">
             <button ng-click="showPlaceDetails()" class="button button-block">How to get there?</button>
         </div>

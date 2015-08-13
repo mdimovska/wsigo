@@ -1,19 +1,27 @@
-<ion-view view-title="Place">
+<ion-view view-title="Details" class="place-details">
     <ion-content  has-bouncing="false">
         <div id="map"></div>
 
-        <h1>Place with id: {{placeId}}</h1>
-        <div>
-            <p>{{place.venue.name}}</p> 
-            <p>{{place.venue.location.distance >= 1000 ? (place.venue.location.distance/1000).toFixed(2) + ' km away' : place.venue.location.distance + ' m away'}}</p>
+        <div class="content">
+            <div class="name-and-distance">
+                <p class="name">{{place.venue.name}}</p> 
+                <p class="distance">{{place.venue.location.distance >= 1000 ? (place.venue.location.distance/1000).toFixed(2) + ' km away' : place.venue.location.distance + ' m away'}}</p>
+            </div>
+
+            <div class="name-and-distance" ng-class="place.venue.rating === undefined ? 'hide' : ''">
+                <p class="title">Rating:</p>
+                <p class="value">{{place.venue.rating}}</p>
+            </div>
+
+            <div class="name-and-distance">
+                <p class="value"> - {{place.venue.hours.status !== undefined ? place.venue.hours.status : (place.venue.hours.isOpen ? 'Open' : 'Closed')}} - </p>
+            </div>
+
+            <div class="name-and-distance">
+                <p class="value">{{place.venue.hereNow.summary}}</p>
+            </div>
+
+            {{place}}
         </div>
-
-        Rating:
-        <p>{{place.venue.rating}}</p>
-
-        <p> - {{place.venue.hours.status}} - </p>
-        <p>{{place.venue.hereNow.summary}}</p>
-
-        {{place}}
     </ion-content>
 </ion-view>

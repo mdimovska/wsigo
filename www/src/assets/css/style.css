@@ -97,6 +97,7 @@ input.search-field {
     padding: 0 !important;
     border: 0 none !important;
     float: left;
+    background-color: transparent;
 }
 .btn-home {
     padding: 5px 25px !important;
@@ -126,6 +127,70 @@ input.search-field {
 .menu-content ion-view {
     background: #333;
 }
+ion-side-menu ion-content {
+    background: #333;
+}
 .menu-content ion-content + ion-content {
     top: 78px;
+}
+
+
+/* Random place */
+p.random-place-name {
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    z-index: 200;
+    background-color: rgba(33, 33, 33, 0.75);
+    font-size: 16px;
+    padding: 6px;
+}
+
+/* Place details */
+ion-view.place-details div.name-and-distance {
+    width: 100%;
+    position: relative;
+    float: left;
+    padding-bottom: 10px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+ion-view.place-details p.name {
+    color: #11c1f3;
+    font-size: 18px;
+    float: left;
+    line-height: 18px;
+}
+ion-view.place-details p.distance {
+    color: #999;
+    float: right;
+    line-height: 18px;
+}
+ion-view.place-details ion-content div.content {
+    padding: 10px;
+}
+ion-view.place-details p {
+    margin: 0;
+}
+ion-view.place-details p.title {
+    width: 100%;
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+ion-view.place-details p.value {
+    width: 100%;
+    color: #aaa;
+    font-size: 14px;
+}
+
+div.hide {
+    display: none !important;
+}
+
+.search-input {
+    height: 100%;
+    border: 0 none;
 }

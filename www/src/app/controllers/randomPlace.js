@@ -6,7 +6,7 @@ angular.module('starter')
                 apiFactory,
                 locationFactory) {
 
-            $scope.imgSrc = 'src/assets/defaultPlaceImg.png';
+            $scope.imgSrc = 'src/assets/images/default-place.png';
             $scope.getRandomPlace = function () {
 
                 var location = locationFactory.getPosition();
@@ -28,6 +28,7 @@ angular.module('starter')
                             $scope.randomPlace = randomPlace;
                             if (randomPlace.venue.featuredPhotos !== undefined && randomPlace.venue.featuredPhotos.items !== undefined && randomPlace.venue.featuredPhotos.items.length > 0) {
                                 $scope.imgSrc = randomPlace.venue.featuredPhotos.items[0].prefix + 'original' + randomPlace.venue.featuredPhotos.items[0].suffix;
+                                $scope.placeName = randomPlace.venue.name;
                             } else {
                                 console.log('random place without image');
                                 $scope.imgSrc = 'src/assets/defaultPlaceImg.png';
