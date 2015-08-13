@@ -127,20 +127,25 @@ div.search-field {
 .menu-content ion-view {
     background: #333;
 }
-ion-side-menu ion-content {
-    background: #333;
-}
 .menu-content ion-content {
+    background: #333;
     position: relative;
     float: left;
     width: 100%;
+    height: 100%;
 }
-.menu-content ion-content + ion-content {
+.menu-content .place-list ion-content {
+    height: auto;
+}
+.menu-content .place-list ion-content + ion-content {
     /* top: 78px; */
     position: relative;
     float: left;
     width: 100%;
     height: 100%;
+}
+ion-side-menu.menu.menu-left ion-content {
+    background: #333;
 }
 
 
