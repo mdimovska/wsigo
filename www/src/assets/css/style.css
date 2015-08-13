@@ -42,11 +42,6 @@ img.home-screen-image {
     background-color: black !important;
     z-index: 2;
 }
-/*
-div.search-field {
-    width: 100%;
-    padding: 5px 15px;
-}*/
 
 #map {
     width: 100%;
@@ -72,7 +67,6 @@ div.search-field {
     background: rgba(17, 193, 243, 0.75);
     
     border: 2px solid #0a9ec7;
-    /* background: rgba(200, 54, 54, 0.5); */ /* 50% transparent */
     color: #fff;
 }
 .home-screen-btn-show-details-wrapper button:hover {
@@ -138,7 +132,6 @@ div.search-field {
     height: auto;
 }
 .menu-content .place-list ion-content + ion-content {
-    /* top: 78px; */
     position: relative;
     float: left;
     width: 100%;

@@ -19,11 +19,6 @@ angular.module('starter')
                     cssClass: "sub-category"
                 },
                 {
-                    name: "Cofee Shop",
-                    id: "4bf58dd8d48988d1e0931735",
-                    cssClass: "sub-category"
-                },
-                {
                     name: "Creperie",
                     id: "52e81612bcbc57f1066b79f2",
                     cssClass: "sub-category"
