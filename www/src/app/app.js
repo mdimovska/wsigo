@@ -54,6 +54,15 @@ angular.module('starter',
                         }
                     })
 
+                    .state('app.tips', {
+                        url: '/places/:placeId/tips',
+                        views: {
+                            'menuContent': {
+                                templateUrl: 'src/app/views/tips.html',
+                                controller: 'TipsCtrl'
+                            }
+                        }
+                    })
                     .state('app.place', {
                         url: '/places/:placeId',
                         views: {
@@ -69,7 +78,6 @@ angular.module('starter',
             uiGmapGoogleMapApiProvider.configure({
                 key: 'AIzaSyD1Gu7s2Eh1LcXGDd4-88DqAbijwYH-iBk',
                 v: '3.17',
-//                libraries: '',
                 language: 'en',
                 sensor: 'false',
             })

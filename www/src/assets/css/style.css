@@ -193,7 +193,7 @@ ion-view.place-details p.value {
     font-size: 14px;
 }
 
-div.hide {
+.hide {
     display: none !important;
 }
 
@@ -205,4 +205,32 @@ div.hide {
 /* place list */
 .list.list-inset.search-field {
     margin: 0;
+}
+
+.item.tabs .tab-item {
+    font-size: 14px;
+    text-align: left;
+    float: left;
+    width: 100%;
+    max-width: 100%;
+    padding-left: 17px;
+}
+
+.tabs-color-calm .tab-item {
+    color: rgba(17, 193, 243, 0.7);
+}
+
+.tips .list.card p {
+    margin: 0;
+}
+
+.place-details .list.card img {
+    margin-bottom: 10px;
+}
+.tips .list.card img {
+    margin-bottom: 10px;
+}
+
+.tips .item.tabs .tab-item p {
+    font-size: 12px;
 }

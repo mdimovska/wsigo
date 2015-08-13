@@ -95,6 +95,9 @@ angular.module('starter')
                 var ll = location.latitude + ',' + location.longitude;
                 return 'https://api.foursquare.com/v2/venues/explore?client_id=WKTSZRJQFBX5LAIGIPTZ0O3XJLX45SOKRRT3JAWQZBNTMDSY&client_secret=X4MV2K10DTQF0O3AEJAF13GRNFIWPXI3PFKPBGJ2OXRTC5TB&ll=' + ll + '&categoryId=' + categoryId + '&v=20150805&venuePhotos=1';
             }
+            apiFactory.getTipsUrl = function (placeId) {
+                return 'https://api.foursquare.com/v2/venues/' + placeId + '/tips?sort=recent&client_id=WKTSZRJQFBX5LAIGIPTZ0O3XJLX45SOKRRT3JAWQZBNTMDSY&client_secret=X4MV2K10DTQF0O3AEJAF13GRNFIWPXI3PFKPBGJ2OXRTC5TB&v=20150805';
+            }
 
             apiFactory.getPlaces = function (categoryId, location) {
 
@@ -110,6 +113,22 @@ angular.module('starter')
                         });
                 return def.promise;
             }
+
+            apiFactory.getTips = function (placeId) {
+
+                var tipsUrl = apiFactory.getTipsUrl(placeId);
+
+                var def = $q.defer();
+                $http.get(tipsUrl)
+                        .success(function (data) {
+                            def.resolve(data);
+                        })
+                        .error(function () {
+                            def.reject("Failed to get tips");
+                        });
+                return def.promise;
+            }
+
             function getRandomNumber(toNumber) {
                 return Math.floor((Math.random() * toNumber));
             }

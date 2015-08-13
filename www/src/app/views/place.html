@@ -5,7 +5,7 @@
         <div class="content">
             <div class="name-and-distance">
                 <p class="name">{{place.venue.name}}</p> 
-                <p class="distance">{{place.venue.location.distance >= 1000 ? (place.venue.location.distance/1000).toFixed(2) + ' km away' : place.venue.location.distance + ' m away'}}</p>
+                <p class="distance">{{place.venue.location.distance >= 1000 ? (place.venue.location.distance / 1000).toFixed(2) + ' km away' : place.venue.location.distance + ' m away'}}</p>
             </div>
 
             <div class="name-and-distance" ng-class="place.venue.rating === undefined ? 'hide' : ''">
@@ -17,8 +17,24 @@
                 <p class="value"> - {{place.venue.hours.status !== undefined ? place.venue.hours.status : (place.venue.hours.isOpen ? 'Open' : 'Closed')}} - </p>
             </div>
 
-            <div class="name-and-distance">
+            <div class="name-and-distance" ng-class="place.venue.hereNow.summary === undefined ? 'hide' : ''">
                 <p class="value">{{place.venue.hereNow.summary}}</p>
+            </div>
+
+            <div class="name-and-distance" ng-class="(place.tips === undefined || place.tips.size === 0) ? 'hide' : ''">
+                <p class="title">Tips:</p>
+                <div class="list card">
+                    <div class="item item-body">
+                        <img class="full-image" ng-src="{{place.tips[0].photourl}}" ng-class="(place.tips[0].photourl === undefined) ? 'hide' : ''">
+                        <p>{{place.tips[0].text}}</p>
+                    </div>
+
+                    <div class="item tabs tabs-secondary tabs-color-calm">
+                        <a class="tab-item" ui-sref="app.tips({placeId:place.venue.id})" >
+                            More tips
+                        </a>
+                    </div>
+                </div>
             </div>
 
             {{place}}
