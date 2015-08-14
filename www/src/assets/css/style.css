@@ -65,13 +65,13 @@ img.home-screen-image {
 .home-screen-btn-show-details-wrapper button {
     border-color: bbb;
     background: rgba(17, 193, 243, 0.75);
-    
+
     border: 2px solid #0a9ec7;
     color: #fff;
 }
 .home-screen-btn-show-details-wrapper button:hover {
-     color: #fff;
-     background: rgba(17, 193, 243, 0.9);
+    color: #fff;
+    background: rgba(17, 193, 243, 0.9);
 }
 
 .side-menu-header {
@@ -233,4 +233,19 @@ ion-view.place-details p.value {
 
 .tips .item.tabs .tab-item p {
     font-size: 12px;
+}
+
+.list.card {
+    margin-bottom: 20px !important;
+}
+.list.card .item {
+    background: rgba(0, 0, 0, 0.835);
+    border-color: #bbb !important;
+    border: 1px solid;
+}
+.list.card .item.item-body {
+    border-bottom-width: 3px;
+}
+.list.card .item.item-body p {
+    color: #eee;
 }
