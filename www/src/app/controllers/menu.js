@@ -4,7 +4,9 @@ angular.module('starter')
                 function (
                         $scope,
                         apiFactory,
-                        categoryDetailsFactory
+                        $state,
+                        categoryDetailsFactory,
+                        $ionicSideMenuDelegate
                         ) {
 
                     // With the new view caching in Ionic, Controllers are only called
@@ -14,11 +16,19 @@ angular.module('starter')
                     //$scope.$on('$ionicView.enter', function(e) {
                     //});
 
-                    
+                    $scope.searchQuery = '';
 
                     $scope.categories = apiFactory.getCategories();
-                    
-                    $scope.setCategoryDetails = function(category) {
+
+                    $scope.setCategoryDetails = function (category) {
                         categoryDetailsFactory.setTempCategoryDetails(category);
+                    }
+
+                    $scope.search = function (event, query) {
+                        if (event.keyCode == 13) {
+                            $state.go('app.placeList', {query: query, categoryId: undefined});
+                             $ionicSideMenuDelegate.toggleLeft();
+                        }
+
                     }
                 })

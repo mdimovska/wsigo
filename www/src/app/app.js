@@ -45,7 +45,7 @@ angular.module('starter',
                         }
                     })
                     .state('app.placeList', {
-                        url: '/categories/:categoryId/places',
+                        url: '/places?categoryId=:&query=:',
                         views: {
                             'menuContent': {
                                 templateUrl: 'src/app/views/placeList.html',

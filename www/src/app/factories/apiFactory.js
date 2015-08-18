@@ -98,6 +98,22 @@ angular.module('starter')
             apiFactory.getTipsUrl = function (placeId) {
                 return 'https://api.foursquare.com/v2/venues/' + placeId + '/tips?sort=recent&client_id=WKTSZRJQFBX5LAIGIPTZ0O3XJLX45SOKRRT3JAWQZBNTMDSY&client_secret=X4MV2K10DTQF0O3AEJAF13GRNFIWPXI3PFKPBGJ2OXRTC5TB&v=20150805';
             }
+            apiFactory.getSearchUrl = function (query, location) {
+                if (location === undefined) {
+                    location = {
+                        latitude: 1,
+                        longitude: 2
+                    }
+                }
+                var ll = location.latitude + ',' + location.longitude;
+                var categoryIdList = '';
+                var categoryList = apiFactory.getCategories();
+                for (var i = 0; i < categoryList.length; i++) {
+                    categoryIdList += categoryList[i]['id'];
+                    categoryIdList += ',';
+                }
+                return 'https://api.foursquare.com/v2/venues/search?client_id=WKTSZRJQFBX5LAIGIPTZ0O3XJLX45SOKRRT3JAWQZBNTMDSY&client_secret=X4MV2K10DTQF0O3AEJAF13GRNFIWPXI3PFKPBGJ2OXRTC5TB&v=20150805&ll=' + ll + '&query=' + query + '&categoryId=' + categoryIdList;
+            }
 
             apiFactory.getPlaces = function (categoryId, location) {
 
@@ -128,7 +144,22 @@ angular.module('starter')
                         });
                 return def.promise;
             }
+            
+            apiFactory.getSearchResults = function (query, location) {
 
+                var searchUrl = apiFactory.getSearchUrl(query, location);
+
+                var def = $q.defer();
+                $http.get(searchUrl)
+                        .success(function (data) {
+                            def.resolve(data);
+                        })
+                        .error(function () {
+                            def.reject("Failed to get search results");
+                        });
+                return def.promise;
+            }
+            
             function getRandomNumber(toNumber) {
                 return Math.floor((Math.random() * toNumber));
             }
