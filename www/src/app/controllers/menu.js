@@ -16,8 +16,6 @@ angular.module('starter')
                     //$scope.$on('$ionicView.enter', function(e) {
                     //});
 
-                    $scope.searchQuery = '';
-
                     $scope.categories = apiFactory.getCategories();
 
                     $scope.setCategoryDetails = function (category) {
@@ -27,8 +25,8 @@ angular.module('starter')
                     $scope.search = function (event, query) {
                         if (event.keyCode == 13) {
                             $state.go('app.placeList', {query: query, categoryId: undefined});
-                             $ionicSideMenuDelegate.toggleLeft();
+                            $ionicSideMenuDelegate.toggleLeft();
                         }
-
                     }
+
                 })

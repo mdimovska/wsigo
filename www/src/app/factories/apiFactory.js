@@ -82,6 +82,7 @@ angular.module('starter')
             apiFactory.getCategories = function () {
                 return categories;
             };
+
             apiFactory.getPlacesUrl = function (categoryId, location) {
                 if (location === undefined) {
                     location = {
@@ -95,9 +96,11 @@ angular.module('starter')
                 var ll = location.latitude + ',' + location.longitude;
                 return 'https://api.foursquare.com/v2/venues/explore?client_id=WKTSZRJQFBX5LAIGIPTZ0O3XJLX45SOKRRT3JAWQZBNTMDSY&client_secret=X4MV2K10DTQF0O3AEJAF13GRNFIWPXI3PFKPBGJ2OXRTC5TB&ll=' + ll + '&categoryId=' + categoryId + '&v=20150805&venuePhotos=1';
             }
+
             apiFactory.getTipsUrl = function (placeId) {
                 return 'https://api.foursquare.com/v2/venues/' + placeId + '/tips?sort=recent&client_id=WKTSZRJQFBX5LAIGIPTZ0O3XJLX45SOKRRT3JAWQZBNTMDSY&client_secret=X4MV2K10DTQF0O3AEJAF13GRNFIWPXI3PFKPBGJ2OXRTC5TB&v=20150805';
             }
+
             apiFactory.getSearchUrl = function (query, location) {
                 if (location === undefined) {
                     location = {
@@ -116,9 +119,7 @@ angular.module('starter')
             }
 
             apiFactory.getPlaces = function (categoryId, location) {
-
                 var placesUrl = apiFactory.getPlacesUrl(categoryId, location);
-
                 var def = $q.defer();
                 $http.get(placesUrl)
                         .success(function (data) {
@@ -131,9 +132,7 @@ angular.module('starter')
             }
 
             apiFactory.getTips = function (placeId) {
-
                 var tipsUrl = apiFactory.getTipsUrl(placeId);
-
                 var def = $q.defer();
                 $http.get(tipsUrl)
                         .success(function (data) {
@@ -144,11 +143,9 @@ angular.module('starter')
                         });
                 return def.promise;
             }
-            
+
             apiFactory.getSearchResults = function (query, location) {
-
                 var searchUrl = apiFactory.getSearchUrl(query, location);
-
                 var def = $q.defer();
                 $http.get(searchUrl)
                         .success(function (data) {
@@ -159,16 +156,17 @@ angular.module('starter')
                         });
                 return def.promise;
             }
-            
+
             function getRandomNumber(toNumber) {
                 return Math.floor((Math.random() * toNumber));
             }
             function getRandom(list) {
                 return list[Math.floor((Math.random() * list.length))];
             }
-            apiFactory.getRandomPlace = function (location) {
 
+            apiFactory.getRandomPlace = function (location) {
                 var categories = apiFactory.getCategories();
+
                 //get random category
                 var categoryId = getRandom(categories).id;
 

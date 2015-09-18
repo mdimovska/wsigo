@@ -8,7 +8,10 @@ angular.module('starter')
             $scope.place = place;
             $scope.placeId = $stateParams.placeId;
             $scope.myLocation = placeDetailsFactory.getTempLocation();
-            $scope.placeLocation = {latitude: place.venue.location.lat, longitude: place.venue.location.lng, };
+            $scope.placeLocation = {
+                latitude: place.venue.location.lat,
+                longitude: place.venue.location.lng,
+            };
 
             var formattedAddressOfPlace = place.venue.location.formattedAddress.join(", ");
 
@@ -34,18 +37,18 @@ angular.module('starter')
             };
             var map = new google.maps.Map(document.getElementById('map'), mapOptions);
             var infoWindow = new google.maps.InfoWindow();
-            var lat_lng = new Array();
-            var latlngbounds = new google.maps.LatLngBounds();
+            var latLngList = new Array();
+            var latLngBounds = new google.maps.LatLngBounds();
             for (i = 0; i < markers.length; i++) {
                 var data = markers[i];
                 var myLatlng = new google.maps.LatLng(data.lat, data.lng);
-                lat_lng.push(myLatlng);
+                latLngList.push(myLatlng);
                 var marker = new google.maps.Marker({
                     position: myLatlng,
                     map: map,
                     title: data.title
                 });
-                latlngbounds.extend(marker.position);
+                latLngBounds.extend(marker.position);
                 (function (marker, data) {
                     google.maps.event.addListener(marker, "click", function (e) {
                         infoWindow.setContent(data.description);
@@ -53,8 +56,8 @@ angular.module('starter')
                     });
                 })(marker, data);
             }
-            map.setCenter(latlngbounds.getCenter());
-            map.fitBounds(latlngbounds);
+            map.setCenter(latLngBounds.getCenter());
+            map.fitBounds(latLngBounds);
 
             //***********ROUTING****************//
 
@@ -68,10 +71,10 @@ angular.module('starter')
             var poly = new google.maps.Polyline({map: map, strokeColor: '#4986E7'});
 
             //Loop and Draw Path Route between the Points on MAP
-            for (var i = 0; i < lat_lng.length; i++) {
-                if ((i + 1) < lat_lng.length) {
-                    var src = lat_lng[i];
-                    var des = lat_lng[i + 1];
+            for (var i = 0; i < latLngList.length; i++) {
+                if ((i + 1) < latLngList.length) {
+                    var src = latLngList[i];
+                    var des = latLngList[i + 1];
                     path.push(src);
                     poly.setPath(path);
                     service.route({

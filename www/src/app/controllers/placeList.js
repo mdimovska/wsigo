@@ -8,20 +8,20 @@ angular.module('starter')
                 locationFactory
                 ) {
 
-            $scope.category = categoryDetailsFactory.getTempCategoryDetais();
+            $scope.category = categoryDetailsFactory.getTempCategoryDetails();
             $scope.title = '';
 
+            //TODO check if really needed...if so, update spec!
             $scope.input = {
                 query: ''
             };
-            //does not work!!!
             $scope.categoryId = $stateParams.categoryId;
 
             $scope.query = $stateParams.query;
             if ($scope.query === undefined) {
             }
 
-            $scope.getPlacesOrSearchResults = function (categoryId, query, location) {
+            $scope.loadPlacesOrSearchResults = function (categoryId, query, location) {
                 $scope.location = location;
                 if (categoryId === undefined) {
                     if (query === undefined) {
@@ -61,16 +61,20 @@ angular.module('starter')
                 }
             };
 
-            var location = locationFactory.getPosition();
-            if (location === undefined) {
-                locationFactory.getCurrentPosition().then(function (result) {
-                    $scope.getPlacesOrSearchResults($scope.categoryId, $scope.query, result);
-                }, function (error) {
-                    console.log('Location retrieval failed. Error: ' + JSON.stringify(error));
-                });
-            } else {
-                $scope.getPlacesOrSearchResults($scope.categoryId, $scope.query, location);
+            $scope.getPlacesOrSearchResults = function () {
+                var location = locationFactory.getLocation();
+                if (location === undefined) {
+                    locationFactory.getCurrentLocation().then(function (result) {
+                        $scope.loadPlacesOrSearchResults($scope.categoryId, $scope.query, result);
+                    }, function (error) {
+                        console.log('Location retrieval failed. Error: ' + JSON.stringify(error));
+                    });
+                } else {
+                    $scope.loadPlacesOrSearchResults($scope.categoryId, $scope.query, location);
+                }
             }
+
+            $scope.getPlacesOrSearchResults();
 
             $scope.setPlaceDetails = function (place) {
                 placeDetailsFactory.setTempPlaceDetails(place);

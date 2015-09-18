@@ -155,6 +155,9 @@ p.random-place-name {
     padding: 6px;
 }
 
+ion-view.place-details div.name-and-distance:last-of-type {
+    margin-bottom: 20px;
+}
 /* Place details */
 ion-view.place-details div.name-and-distance {
     width: 100%;
@@ -163,7 +166,9 @@ ion-view.place-details div.name-and-distance {
     padding-bottom: 10px;
     margin-top: 2px;
     margin-bottom: 2px;
+    clear: right;
 }
+
 ion-view.place-details p.name {
     color: #11c1f3;
     font-size: 18px;
@@ -248,4 +253,9 @@ ion-view.place-details p.value {
 }
 .list.card .item.item-body p {
     color: #eee;
+}
+
+div.clear {
+    clear: both;
+    height: 20px;
 }
