@@ -8,7 +8,7 @@
         <img ng-src="{{imgSrc}}" class="home-screen-image" image-resize/>
         <p class="random-place-name">{{placeName}}</p>
         <div class="home-screen-btn-show-details-wrapper">
-            <button ng-click="showPlaceDetails()" class="button button-block">How to get there?</button>
+            <button ng-click="showPlaceDetails()" class="button button-block" ng-disabled="randomPlace == null || randomPlace === undefined">How to get there?</button>
         </div>
     </ion-content>
 </ion-view>
