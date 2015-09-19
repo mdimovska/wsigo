@@ -30,8 +30,8 @@ angular.module('starter')
                             $scope.randomPlace = randomPlace;
                             $scope.placeName = randomPlace.venue.name;
                             if (randomPlace.venue.featuredPhotos !== undefined
-                                && randomPlace.venue.featuredPhotos.items !== undefined
-                                && randomPlace.venue.featuredPhotos.items.length > 0) {
+                                    && randomPlace.venue.featuredPhotos.items !== undefined
+                                    && randomPlace.venue.featuredPhotos.items.length > 0) {
                                 $scope.imgSrc = randomPlace.venue.featuredPhotos.items[0].prefix + 'original' + randomPlace.venue.featuredPhotos.items[0].suffix;
                             } else {
                                 console.log('random place without image');

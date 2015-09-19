@@ -11,7 +11,6 @@ angular.module('starter')
             $scope.category = categoryDetailsFactory.getTempCategoryDetails();
             $scope.title = '';
 
-            //TODO check if really needed...if so, update spec!
             $scope.input = {
                 query: ''
             };
