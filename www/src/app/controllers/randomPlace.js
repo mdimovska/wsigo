@@ -14,6 +14,7 @@ angular.module('starter')
                     locationFactory.getCurrentLocation().then(function (result) {
                         loadPlace(result);
                     }, function (error) {
+                        alert('There is problem getting your location, please enable location services and try again!');
                         console.log('Location retrieval failed. Error: ' + JSON.stringify(error));
                     });
                 } else {
@@ -28,7 +29,9 @@ angular.module('starter')
                             var randomPlace = success;
                             $scope.randomPlace = randomPlace;
                             $scope.placeName = randomPlace.venue.name;
-                            if (randomPlace.venue.featuredPhotos !== undefined && randomPlace.venue.featuredPhotos.items !== undefined && randomPlace.venue.featuredPhotos.items.length > 0) {
+                            if (randomPlace.venue.featuredPhotos !== undefined
+                                && randomPlace.venue.featuredPhotos.items !== undefined
+                                && randomPlace.venue.featuredPhotos.items.length > 0) {
                                 $scope.imgSrc = randomPlace.venue.featuredPhotos.items[0].prefix + 'original' + randomPlace.venue.featuredPhotos.items[0].suffix;
                             } else {
                                 console.log('random place without image');

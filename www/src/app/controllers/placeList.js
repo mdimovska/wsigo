@@ -67,6 +67,7 @@ angular.module('starter')
                     locationFactory.getCurrentLocation().then(function (result) {
                         $scope.loadPlacesOrSearchResults($scope.categoryId, $scope.query, result);
                     }, function (error) {
+                        alert('There is problem getting your location, please enable location services and try again!');
                         console.log('Location retrieval failed. Error: ' + JSON.stringify(error));
                     });
                 } else {
