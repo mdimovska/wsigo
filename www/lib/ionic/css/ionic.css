@@ -4252,7 +4252,11 @@ ion-tabs.tabs-color-active-dark .tab-item {
   .menu .scroll-content {
     z-index: 10; }
   .menu .bar-header {
-    z-index: 11; }
+    z-index: 11;
+    padding: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    }
 
 .menu-content {
   -webkit-transform: none;

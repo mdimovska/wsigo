@@ -14,9 +14,9 @@ ion-item.sub-category {
     position: relative;
 }
 .home-screen-btn-show-details-wrapper {
-    position: fixed;
+    position: absolute;
     z-index: 10;
-    bottom: 0;
+    bottom: 45px;
     left: 0;
     right: 0;
     width: 100%;
@@ -75,7 +75,7 @@ img.home-screen-image {
 }
 
 .side-menu-header {
-    padding: 5px 0;
+    /* padding: 5px 0; */
     border-bottom: 0;
 }
 
@@ -159,7 +159,7 @@ ion-view.place-details div.name-and-distance:last-of-type {
     margin-bottom: 20px;
 }
 /* Place details */
-ion-view.place-details div.name-and-distance {
+.name-and-distance {
     width: 100%;
     position: relative;
     float: left;
@@ -203,7 +203,7 @@ ion-view.place-details p.value {
 }
 
 .search-input {
-    height: 100%;
+    /* height: 100%; */
     border: 0 none;
 }
 
@@ -258,4 +258,8 @@ ion-view.place-details p.value {
 div.clear {
     clear: both;
     height: 20px;
+}
+
+ion-view.place-details div.name-and-distance.tips {
+    margin-bottom: 20px;
 }
