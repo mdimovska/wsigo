@@ -32,7 +32,7 @@ angular.module('starter')
                                 $scope.imgSrc = randomPlace.venue.featuredPhotos.items[0].prefix + 'original' + randomPlace.venue.featuredPhotos.items[0].suffix;
                             } else {
                                 console.log('random place without image');
-                                $scope.imgSrc = 'src/assets/defaultPlaceImg.png';
+                                $scope.imgSrc = 'src/assets/images/default-place.png';
                             }
                         }, function (error) {
                             console.log('Random place retrieval failed. Error: ' + JSON.stringify(error));

@@ -131,6 +131,16 @@ img.home-screen-image {
 .menu-content .place-list ion-content {
     height: auto;
 }
+.place-list p.no-items-text {
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 20px;
+}
+.place-list p.no-items-text-hide {
+    display: none;
+    visibility: hidden;
+}
 .menu-content .place-list ion-content + ion-content {
     position: relative;
     float: left;
