@@ -93,8 +93,10 @@ img.home-screen-image {
     float: left;
     background-color: transparent;
 }
-.btn-home {
+.button.button-full.btn-home {
     padding: 5px 25px !important;
+    margin-bottom: 0px;
+    margin-top: 0;
 }
 .item-thumbnail-left, .item-thumbnail-left .item-content {
     min-height: 10px;
@@ -213,7 +215,7 @@ ion-view.place-details p.value {
 }
 
 .search-input {
-    /* height: 100%; */
+    height: 100%;
     border: 0 none;
 }
 

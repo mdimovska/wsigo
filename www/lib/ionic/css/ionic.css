@@ -2,7 +2,7 @@
  * Copyright 2014 Drifty Co.
  * http://drifty.com/
  *
- * Ionic, v1.0.1
+ * Ionic, v1.1.0
  * A powerful HTML5 mobile app framework.
  * http://ionicframework.com/
  *
@@ -17,10 +17,10 @@
   https://twitter.com/benjsperry  https://twitter.com/ionicframework
   MIT License: https://github.com/driftyco/ionicons
 
-  Android-style icons originally built by Google?s
+  Android-style icons originally built by Google???s
   Material Design Icons: https://github.com/google/material-design-icons
   used under CC BY http://creativecommons.org/licenses/by/4.0/
-  Modified icons to fit ionicon?s grid from original.
+  Modified icons to fit ionicon???s grid from original.
 */
 @font-face {
   font-family: "Ionicons";
@@ -3046,7 +3046,7 @@ a.subdued {
   border-style: solid;
   border-top: 1px solid transparent;
   border-bottom: 1px solid #ddd;
-  /* background-color: white; */
+  background-color: white;
   /* border-width: 1px will actually create 2 device pixels on retina */
   /* this nifty trick sets an actual 1px border on hi-res displays */
   background-size: 0; }
@@ -4234,6 +4234,12 @@ ion-tabs.tabs-color-active-dark .tab-item {
   cursor: default;
   pointer-events: none; }
 
+.nav-bar-tabs-top.hide ~ .view-container .tabs-top .tabs {
+  top: 0; }
+
+.pane[hide-nav-bar="true"] .has-tabs-top {
+  top: 49px; }
+
 /**
  * Menus
  * --------------------------------------------------
@@ -4253,9 +4259,9 @@ ion-tabs.tabs-color-active-dark .tab-item {
     z-index: 10; }
   .menu .bar-header {
     z-index: 11;
-    padding: 0;
-    padding-left: 5px;
-    padding-right: 5px;
+    background-color: #444444;
+    /* padding-left: 0; */
+    /* padding-right: 0; */
     }
 
 .menu-content {
@@ -4264,7 +4270,8 @@ ion-tabs.tabs-color-active-dark .tab-item {
   box-shadow: -1px 0px 2px rgba(0, 0, 0, 0.2), 1px 0px 2px rgba(0, 0, 0, 0.2); }
 
 .menu-open .menu-content .pane, .menu-open .menu-content .scroll-content {
-  pointer-events: none; }
+  pointer-events: none;
+  overflow: hidden; }
 
 .grade-b .menu-content, .grade-c .menu-content {
   -webkit-box-sizing: content-box;
@@ -4849,7 +4856,9 @@ a.item-content {
 .item-complex.item-balanced > .item-content {
   border-color: #28a54c;
   background-color: #33cd5f;
-  color: #fff; }
+  color: #fff;
+  border: 0 none;
+  }
   .item-complex.item-balanced > .item-content.active, .item-complex.item-balanced > .item-content:active {
     border-color: #28a54c;
     background-color: #28a54c; }
@@ -5047,14 +5056,13 @@ a.item-content {
     position: absolute;
     top: 10px;
     left: 10px;
-    max-width: 60px;
-    max-height: 60px;
+    max-width: 80px;
+    max-height: 80px;
     width: 100%;
     height: 100%; }
 
 .item-avatar.item-complex, .item-avatar-left.item-complex, .item-thumbnail-left.item-complex {
   padding-top: 0;
-  /* margin-bottom: 0; */
   padding-left: 0; }
 
 .item-thumbnail-right, .item-thumbnail-right .item-content {
@@ -5293,7 +5301,7 @@ a.item-content {
  */
 .list {
   position: relative;
-  /* padding-top: 1px; */
+  padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 0;
   margin-bottom: 20px; }
@@ -6450,7 +6458,7 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
     top: 0;
     bottom: 0;
     right: 0;
-    padding: 14px 48px 16px 16px;
+    padding: 0 48px 0 16px;
     max-width: 65%;
     border: none;
     background: #fff;
@@ -6589,9 +6597,10 @@ progress {
     float: right;
     padding-right: 0;
     padding-left: 0.2em; }
-  ion-item.button.button-full.button-calm.side-menu-button.item.item-complex.main-category {
+  .button.button-block, .button.button-full {
     margin-top: 10px;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    }
   .button.button-light {
     border-color: #ddd;
     background-color: #fff;
