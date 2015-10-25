@@ -50,7 +50,7 @@ angular.module('starter')
                 });
                 latLngBounds.extend(marker.position);
                 (function (marker, data) {
-                    google.maps.event.addListener(marker, "click", function (e) {
+                    google.maps.event.addListener(marker, "mousedown", function (e) {
                         infoWindow.setContent(data.description);
                         infoWindow.open(map, marker);
                     });
